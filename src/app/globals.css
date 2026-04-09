@@ -1,26 +1,283 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ========================================
+   CHÂTEAU DE CHAUSSY - WEDDING INVITATION
+   Luxury Color Palette & Design System
+   ======================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* -- Color Palette (inspired by château stone, nature, gold accents) -- */
+  --color-navy: #1B2A4A;
+  --color-navy-light: #2D4470;
+  --color-navy-dark: #111C33;
+  --color-stone: #C9B99A;
+  --color-stone-light: #D4C8AD;
+  --color-stone-dark: #A89A7B;
+  --color-cream: #FAF7F2;
+  --color-cream-dark: #F0EBE1;
+  --color-sand: #EDE5D8;
+  --color-gold: #C9A96E;
+  --color-gold-light: #D4B87A;
+  --color-gold-dark: #A8894D;
+  --color-dark: #1A1814;
+  --color-charcoal: #3D3529;
+  --color-rose: #C4918A;
+  --color-rose-light: #D4A9A3;
+  --color-sage: #8B9E7E;
+  --color-sage-light: #A3B496;
+  --color-white-warm: #FFFDF9;
+
+  /* -- Typography -- */
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-body: "Cormorant Garamond", "Garamond", serif;
+  --font-sans: "Montserrat", "Helvetica Neue", sans-serif;
+
+  /* -- Animations -- */
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --animate-fade-in: fade-in 1s var(--ease-luxury) forwards;
+  --animate-slide-up: slide-up 0.8s var(--ease-luxury) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-pulse-gold: pulse-gold 2s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================================
+   KEYFRAMES
+   ======================================== */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.4); }
+  50% { box-shadow: 0 0 20px 5px rgba(201, 169, 110, 0.1); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reveal-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes particles {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-cream);
+}
+
+::-moz-selection {
+  background-color: var(--color-gold);
+  color: var(--color-cream);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* ========================================
+   TYPOGRAPHY UTILITIES
+   ======================================== */
+
+.font-heading {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.font-elegant {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.font-ui {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* ========================================
+   DECORATIVE ELEMENTS
+   ======================================== */
+
+.gold-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 0 auto;
+}
+
+.gold-line-wide {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 6rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 8rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 10rem 4rem;
+  }
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(250, 247, 242, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+/* Ornate border */
+.ornate-border {
+  border: 1px solid var(--color-gold);
+  padding: 2px;
+  position: relative;
+}
+
+.ornate-border::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(201, 169, 110, 0.3);
+}
+
+/* Image placeholder styling */
+.image-placeholder {
+  background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-stone-light) 50%, var(--color-cream-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-stone-dark);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+  border-radius: 0.5rem;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.5rem !important;
+  font-family: var(--font-body) !important;
+}
+
+/* ========================================
+   CUSTOM CURSOR (desktop only)
+   ======================================== */
+
+@media (pointer: fine) {
+  .custom-cursor-active {
+    cursor: none;
+  }
+
+  .custom-cursor-active a,
+  .custom-cursor-active button,
+  .custom-cursor-active [role="button"] {
+    cursor: none;
+  }
+}
+
+/* ========================================
+   SMOOTH SECTION TRANSITIONS
+   ======================================== */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-stone-light) 20%,
+    var(--color-gold) 50%,
+    var(--color-stone-light) 80%,
+    transparent 100%
+  );
+  max-width: 600px;
+  margin: 0 auto;
 }
