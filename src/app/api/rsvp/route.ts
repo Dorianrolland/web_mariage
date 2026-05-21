@@ -14,6 +14,9 @@ interface RSVPData {
   dietary: string;
   message: string;
   accommodation: string;
+  accommodationGroup?: string;
+  songSuggestion?: string;
+  days?: string[];
 }
 
 export async function POST(request: Request) {

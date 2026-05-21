@@ -2,7 +2,7 @@
 
 import { useState, useEffect, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Check, AlertCircle, Users, Utensils, MessageCircle, Music } from "lucide-react";
+import { Send, Check, AlertCircle, Users, Utensils, MessageCircle, Music, Calendar } from "lucide-react";
 import confetti from "canvas-confetti";
 import ScrollReveal from "./ScrollReveal";
 import WatercolorScatter from "./WatercolorScatter";
@@ -32,6 +32,8 @@ function fireSuccessConfetti() {
   }, 250);
 }
 
+type Day = "friday" | "saturday" | "sundayBrunch";
+
 interface FormData {
   firstName: string;
   lastName: string;
@@ -41,7 +43,9 @@ interface FormData {
   dietary: string;
   message: string;
   accommodation: "yes" | "no" | "";
+  accommodationGroup: string;
   songSuggestion: string;
+  days: Day[];
 }
 
 const initialForm: FormData = {
@@ -53,8 +57,23 @@ const initialForm: FormData = {
   dietary: "",
   message: "",
   accommodation: "",
+  accommodationGroup: "",
   songSuggestion: "",
+  days: ["saturday"],
 };
+
+const DAY_OPTIONS: { value: Day; label: string; sub: string }[] = [
+  { value: "friday",       label: "Vendredi soir", sub: "3 sept. — apéro d'accueil" },
+  { value: "saturday",     label: "Samedi",        sub: "4 sept. — le grand jour" },
+  { value: "sundayBrunch", label: "Dimanche",      sub: "5 sept. — brunch & au revoir" },
+];
+
+const GROUP_OPTIONS = [
+  { value: "couple",  label: "En couple" },
+  { value: "famille", label: "Famille avec enfants" },
+  { value: "amis",    label: "Bande d'amis" },
+  { value: "solo",    label: "Solo" },
+];
 
 export default function RSVPSection() {
   const [form, setForm] = useState<FormData>(initialForm);
@@ -70,6 +89,15 @@ export default function RSVPSection() {
 
   const updateField = (field: keyof FormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const toggleDay = (day: Day) => {
+    setForm((prev) => ({
+      ...prev,
+      days: prev.days.includes(day)
+        ? prev.days.filter((d) => d !== day)
+        : [...prev.days, day],
+    }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -357,6 +385,36 @@ export default function RSVPSection() {
                         />
                       </div>
 
+                      {/* Présence par jour — multi-select */}
+                      <div>
+                        <label className="font-ui mb-3 block text-xs text-charcoal/60">
+                          <Calendar className="mr-1 inline h-3 w-3 text-gold" />
+                          À quels moments serez-vous des nôtres ?
+                        </label>
+                        <div className="grid gap-2 sm:grid-cols-3">
+                          {DAY_OPTIONS.map((d) => {
+                            const active = form.days.includes(d.value);
+                            return (
+                              <button
+                                key={d.value}
+                                type="button"
+                                onClick={() => toggleDay(d.value)}
+                                className={`rounded-lg border-2 px-4 py-3 text-left transition-all duration-300 ${
+                                  active
+                                    ? "border-gold bg-gold/10 text-navy"
+                                    : "border-stone-light text-charcoal/60 hover:border-gold/30"
+                                }`}
+                              >
+                                <span className="font-heading block text-sm">{d.label}</span>
+                                <span className="font-ui mt-1 block text-[10px] tracking-[0.1em] opacity-70">
+                                  {d.sub}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
                       <div>
                         <label className="font-ui mb-4 block text-xs text-charcoal/60">
                           Souhaitez-vous un hébergement sur place ?
@@ -381,6 +439,40 @@ export default function RSVPSection() {
                           ))}
                         </div>
                       </div>
+
+                      {form.accommodation === "yes" && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                        >
+                          <label className="font-ui mb-3 block text-xs text-charcoal/60">
+                            Avec qui vous voyez-vous loger ?
+                          </label>
+                          <div className="grid gap-2 sm:grid-cols-2">
+                            {GROUP_OPTIONS.map((opt) => {
+                              const active = form.accommodationGroup === opt.value;
+                              return (
+                                <button
+                                  key={opt.value}
+                                  type="button"
+                                  onClick={() => updateField("accommodationGroup", opt.value)}
+                                  className={`rounded-lg border-2 px-4 py-2.5 text-center transition-all duration-300 ${
+                                    active
+                                      ? "border-gold bg-gold/10 text-navy"
+                                      : "border-stone-light text-charcoal/60 hover:border-gold/30"
+                                  }`}
+                                >
+                                  <span className="font-heading text-sm">{opt.label}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                          <p className="font-ui mt-2 text-[10px] tracking-[0.15em] text-charcoal/40">
+                            Voir la section <a href="#hebergement" className="underline">Hébergement</a> pour les 21 gîtes du domaine.
+                          </p>
+                        </motion.div>
+                      )}
                     </>
                   )}
 
@@ -460,6 +552,15 @@ export default function RSVPSection() {
                             <span className="text-charcoal/60">Accompagnants :</span>{" "}
                             {form.guests}
                           </p>
+                          {form.days.length > 0 && (
+                            <p>
+                              <span className="text-charcoal/60">Présence :</span>{" "}
+                              {form.days
+                                .map((d) => DAY_OPTIONS.find((o) => o.value === d)?.label)
+                                .filter(Boolean)
+                                .join(", ")}
+                            </p>
+                          )}
                           {form.dietary && (
                             <p>
                               <span className="text-charcoal/60">Régime :</span>{" "}
@@ -468,7 +569,9 @@ export default function RSVPSection() {
                           )}
                           <p>
                             <span className="text-charcoal/60">Hébergement :</span>{" "}
-                            {form.accommodation === "yes" ? "Oui" : "Non"}
+                            {form.accommodation === "yes"
+                              ? `Oui${form.accommodationGroup ? ` (${GROUP_OPTIONS.find((g) => g.value === form.accommodationGroup)?.label})` : ""}`
+                              : "Non"}
                           </p>
                         </>
                       )}

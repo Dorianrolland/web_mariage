@@ -6,10 +6,11 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Notre Histoire", href: "#histoire" },
+  { label: "Voyages", href: "#voyages" },
   { label: "Le Lieu", href: "#lieu" },
   { label: "Programme", href: "#programme" },
   { label: "Galerie", href: "#galerie" },
-  { label: "Infos", href: "#infos" },
+  { label: "Hébergement", href: "#hebergement" },
   { label: "RSVP", href: "#rsvp" },
 ];
 

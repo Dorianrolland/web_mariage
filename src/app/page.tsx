@@ -6,7 +6,9 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import Ornament from "@/components/Ornament";
 import OurStory from "@/components/OurStory";
+import VoyagesSection from "@/components/VoyagesSection";
 import VenueSection from "@/components/VenueSection";
+import HebergementSection from "@/components/HebergementSection";
 import ProgramSection from "@/components/ProgramSection";
 import ParallaxDivider from "@/components/ParallaxDivider";
 import CountdownSection from "@/components/CountdownSection";
@@ -28,6 +30,9 @@ export default function Home() {
         <div className="section-fade" />
         <Ornament />
         <OurStory />
+
+        <Ornament />
+        <VoyagesSection />
 
         <ParallaxDivider
           src="/images/jardin.webp"
@@ -57,6 +62,9 @@ export default function Home() {
 
         <div className="section-fade" />
         <PracticalSection />
+
+        <Ornament />
+        <HebergementSection />
 
         <Ornament />
         <RSVPSection />
