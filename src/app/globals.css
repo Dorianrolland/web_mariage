@@ -1,38 +1,57 @@
 @import "tailwindcss";
 
 /* ========================================
-   CHÂTEAU DE CHAUSSY - WEDDING INVITATION
-   Luxury Color Palette & Design System
+   CHÂTEAU DE CHAUSSY — WEDDING INVITATION
+   Palette "Golden Hour" — aquarelles peintes à la main
+   Crème chaud / terracotta / safran / coquelicot
    ======================================== */
 
 @theme inline {
-  /* -- Color Palette (inspired by château stone, nature, gold accents) -- */
-  --color-navy: #1B2A4A;
-  --color-navy-light: #2D4470;
-  --color-navy-dark: #111C33;
-  --color-stone: #C9B99A;
-  --color-stone-light: #D4C8AD;
-  --color-stone-dark: #A89A7B;
-  --color-cream: #FAF7F2;
-  --color-cream-dark: #F0EBE1;
-  --color-sand: #EDE5D8;
-  --color-gold: #C9A96E;
-  --color-gold-light: #D4B87A;
-  --color-gold-dark: #A8894D;
-  --color-dark: #1A1814;
-  --color-charcoal: #3D3529;
-  --color-rose: #C4918A;
-  --color-rose-light: #D4A9A3;
-  --color-sage: #8B9E7E;
-  --color-sage-light: #A3B496;
-  --color-white-warm: #FFFDF9;
+  /* -- Nouveaux tokens sémantiques (palette coucher de soleil) -- */
+  --color-paper: #FBF4E9;          /* fond dominant : papier aquarelle, crème chaud */
+  --color-paper-warm: #F6EAD4;     /* crème plus saturé pour bandes/sections */
+  --color-paper-soft: #FDF8EF;     /* presque blanc cassé pour cartes */
+  --color-terracotta: #C85A3B;     /* orange brûlé, accent principal */
+  --color-terracotta-light: #E07D5A;
+  --color-terracotta-dark: #9C3F26; /* AA sur paper pour texte d'accent */
+  --color-saffron: #E0A82E;        /* jaune safran / doré chaud (déco) */
+  --color-saffron-light: #ECC15B;
+  --color-saffron-dark: #B07F18;
+  --color-poppy: #D9526B;          /* rose coquelicot poudré */
+  --color-poppy-light: #E68298;
+  --color-poppy-dark: #A93650;
+  --color-aubergine: #3A2218;      /* texte principal : brun-aubergine chaud */
+  --color-aubergine-light: #5A3528;
+  --color-aubergine-soft: #7A5443; /* texte secondaire */
+  --color-sage-warm: #8F9E72;      /* feuillage discret */
 
-  /* -- Typography -- */
+  /* -- Tokens hérités remappés vers la palette chaude (compat composants) -- */
+  --color-navy: #2A2238;            /* touche froide rare, virée vers prune */
+  --color-navy-light: #3D3550;
+  --color-navy-dark: #1C1626;
+  --color-stone: #D7BFA0;           /* sable chaud */
+  --color-stone-light: #E6D4B6;
+  --color-stone-dark: #B89A78;
+  --color-cream: #FBF4E9;           /* alias de paper pour compat */
+  --color-cream-dark: #F2E6D2;
+  --color-sand: #ECDDC2;
+  --color-gold: #C58A3D;            /* doré terracotta, plus chaud que l'ancien */
+  --color-gold-light: #DDA85A;
+  --color-gold-dark: #9C6B26;
+  --color-dark: #2A1A12;            /* aubergine très foncé */
+  --color-charcoal: #3A2218;        /* texte principal — était #3D3529 */
+  --color-rose: #D9526B;            /* aligné sur poppy */
+  --color-rose-light: #E68298;
+  --color-sage: #8F9E72;
+  --color-sage-light: #A8B58F;
+  --color-white-warm: #FDF8EF;
+
+  /* -- Typographie (inchangée) -- */
   --font-serif: "Playfair Display", "Georgia", serif;
   --font-body: "Cormorant Garamond", "Garamond", serif;
   --font-sans: "Montserrat", "Helvetica Neue", sans-serif;
 
-  /* -- Animations -- */
+  /* -- Animations (inchangé) -- */
   --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -42,6 +61,48 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-shimmer: shimmer 3s ease-in-out infinite;
   --animate-pulse-gold: pulse-gold 2s ease-in-out infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+}
+
+/* ========================================
+   DÉGRADÉS GOLDEN HOUR (réutilisables)
+   ======================================== */
+
+:root {
+  /* Dégradé chaleureux pour fond de section (subtil) */
+  --gradient-golden-hour: linear-gradient(
+    180deg,
+    #FBF4E9 0%,
+    #F8EAD4 45%,
+    #F2D9B5 100%
+  );
+  /* Dégradé "coucher de soleil" plus marqué pour accents */
+  --gradient-sunset: linear-gradient(
+    135deg,
+    #ECC15B 0%,
+    #E07D5A 45%,
+    #D9526B 100%
+  );
+  /* Dégradé doux pour transitions entre sections */
+  --gradient-section-fade: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(246, 234, 212, 0.6) 50%,
+    transparent 100%
+  );
+  /* Voile crème chaud pour bandes */
+  --gradient-paper-warm: linear-gradient(
+    180deg,
+    #FBF4E9 0%,
+    #F6EAD4 100%
+  );
+  /* Halo radial pour effet lumière */
+  --gradient-glow: radial-gradient(
+    ellipse at center,
+    rgba(236, 193, 91, 0.18) 0%,
+    rgba(224, 125, 90, 0.08) 40%,
+    transparent 70%
+  );
 }
 
 /* ========================================
@@ -69,8 +130,8 @@
 }
 
 @keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.4); }
-  50% { box-shadow: 0 0 20px 5px rgba(201, 169, 110, 0.1); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(197, 138, 61, 0.4); }
+  50% { box-shadow: 0 0 20px 5px rgba(197, 138, 61, 0.1); }
 }
 
 @keyframes spin-slow {
@@ -88,6 +149,14 @@
   100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
 }
 
+/* Dérive douce pour les insectes aquarelle */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(8px, -10px) rotate(2deg); }
+  50%      { transform: translate(-6px, 6px) rotate(-2deg); }
+  75%      { transform: translate(4px, 4px) rotate(1deg); }
+}
+
 /* ========================================
    BASE STYLES
    ======================================== */
@@ -98,25 +167,39 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-charcoal);
+  background-color: var(--color-paper);
+  color: var(--color-aubergine);
   font-family: var(--font-body);
   font-size: 19px;
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Texture papier aquarelle très subtile (SVG noise inline) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.13 0 0 0 0 0.09 0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
 }
 
 /* Selection */
 ::selection {
-  background-color: var(--color-gold);
-  color: var(--color-cream);
+  background-color: var(--color-terracotta);
+  color: var(--color-paper);
 }
 
 ::-moz-selection {
-  background-color: var(--color-gold);
-  color: var(--color-cream);
+  background-color: var(--color-terracotta);
+  color: var(--color-paper);
 }
 
 /* Scrollbar */
@@ -125,7 +208,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-cream);
+  background: var(--color-paper-warm);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -134,7 +217,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold);
+  background: var(--color-terracotta);
 }
 
 /* ========================================
@@ -176,14 +259,14 @@ body {
 .gold-line {
   width: 60px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-terracotta), transparent);
   margin: 0 auto;
 }
 
 .gold-line-wide {
   width: 120px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-terracotta), transparent);
   margin: 0 auto;
 }
 
@@ -203,17 +286,17 @@ body {
   }
 }
 
-/* Glass morphism */
+/* Glass morphism — crème chaud translucide */
 .glass {
-  background: rgba(250, 247, 242, 0.8);
+  background: rgba(253, 248, 239, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(201, 169, 110, 0.15);
+  border: 1px solid rgba(197, 138, 61, 0.18);
 }
 
 /* Ornate border */
 .ornate-border {
-  border: 1px solid var(--color-gold);
+  border: 1px solid var(--color-terracotta);
   padding: 2px;
   position: relative;
 }
@@ -222,7 +305,7 @@ body {
   content: '';
   position: absolute;
   inset: 4px;
-  border: 1px solid rgba(201, 169, 110, 0.3);
+  border: 1px solid rgba(197, 138, 61, 0.3);
 }
 
 /* Image placeholder styling */
@@ -231,7 +314,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-stone-dark);
+  color: var(--color-aubergine-soft);
   font-family: var(--font-body);
   font-style: italic;
   font-size: 0.875rem;
@@ -273,11 +356,42 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--color-stone-light) 20%,
-    var(--color-gold) 50%,
-    var(--color-stone-light) 80%,
+    rgba(215, 191, 160, 0.6) 20%,
+    var(--color-terracotta) 50%,
+    rgba(215, 191, 160, 0.6) 80%,
     transparent 100%
   );
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* Bande de transition golden-hour entre deux sections */
+.section-fade {
+  height: 120px;
+  background: var(--gradient-section-fade);
+  pointer-events: none;
+}
+
+/* Halo lumineux subtil pour fonds de section */
+.section-glow {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-glow);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================================
+   ACCESSIBILITY — reduced motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

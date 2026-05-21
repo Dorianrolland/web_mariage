@@ -1,7 +1,6 @@
 "use client";
 
 import IntroAnimation from "@/components/IntroAnimation";
-import FloatingPetals from "@/components/FloatingPetals";
 import CustomCursor from "@/components/CustomCursor";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -20,13 +19,13 @@ export default function Home() {
   return (
     <>
       <IntroAnimation />
-      <FloatingPetals />
       <CustomCursor />
       <Navigation />
 
       <main>
         <HeroSection />
 
+        <div className="section-fade" />
         <Ornament />
         <OurStory />
 
@@ -37,11 +36,13 @@ export default function Home() {
           author="William Shakespeare"
         />
 
+        <div className="section-fade" />
         <VenueSection />
 
         <Ornament />
         <ProgramSection />
 
+        <div className="section-fade" />
         <CountdownSection />
 
         <Ornament />
@@ -54,6 +55,7 @@ export default function Home() {
           author="Clémence & Dorian"
         />
 
+        <div className="section-fade" />
         <PracticalSection />
 
         <Ornament />

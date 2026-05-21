@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorScatter from "./WatercolorScatter";
 
 interface GalleryImage {
   id: number;
@@ -134,7 +135,16 @@ export default function GallerySection() {
   }, [lightboxIndex]);
 
   return (
-    <section id="galerie" className="section-padding bg-white-warm">
+    <section id="galerie" className="section-padding bg-white-warm relative overflow-hidden">
+      <WatercolorScatter
+        density={2}
+        mobileDensity={1}
+        types={["insecte"]}
+        zone="corners"
+        seed={44}
+        minSize={100}
+        maxSize={160}
+      />
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <ScrollReveal className="mb-16 text-center md:mb-24">

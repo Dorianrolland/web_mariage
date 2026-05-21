@@ -3,6 +3,7 @@
 import { Heart, Calendar, CalendarPlus, Music, MapPin, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorScatter from "./WatercolorScatter";
 
 function generateCalendarUrl() {
   const event = {
@@ -90,6 +91,16 @@ const bonusLinks = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy pb-8 pt-16">
+      <WatercolorScatter
+        density={2}
+        mobileDensity={1}
+        types={["insecte"]}
+        zone="corners"
+        seed={66}
+        minSize={80}
+        maxSize={130}
+        opacityScale={0.85}
+      />
       {/* Decorative top border */}
       <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 

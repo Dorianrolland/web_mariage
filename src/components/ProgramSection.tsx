@@ -9,6 +9,7 @@ import {
   Sunrise,
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorScatter from "./WatercolorScatter";
 
 const events = [
   {
@@ -57,7 +58,17 @@ const events = [
 
 export default function ProgramSection() {
   return (
-    <section id="programme" className="section-padding bg-cream">
+    <section id="programme" className="section-padding bg-cream relative overflow-hidden">
+      {/* Cocktails aquarelle en accent (Vin d'honneur) */}
+      <WatercolorScatter
+        density={3}
+        mobileDensity={1}
+        types={["cocktail"]}
+        zone="edges"
+        seed={33}
+        minSize={130}
+        maxSize={230}
+      />
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <ScrollReveal className="mb-16 text-center md:mb-24">

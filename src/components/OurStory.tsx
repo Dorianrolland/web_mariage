@@ -2,6 +2,7 @@
 
 import { Heart } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorScatter from "./WatercolorScatter";
 
 const milestones = [
   {
@@ -28,8 +29,18 @@ const milestones = [
 
 export default function OurStory() {
   return (
-    <section id="histoire" className="section-padding bg-cream">
-      <div className="mx-auto max-w-4xl">
+    <section id="histoire" className="section-padding bg-cream relative overflow-hidden">
+      {/* Coquelicots/bouquet en filigrane chaud, bas de section */}
+      <WatercolorScatter
+        density={3}
+        mobileDensity={1}
+        types={["fleur", "composition"]}
+        zone="bottom"
+        seed={21}
+        minSize={140}
+        maxSize={260}
+      />
+      <div className="relative z-10 mx-auto max-w-4xl">
         {/* Section header */}
         <ScrollReveal className="mb-16 text-center md:mb-24">
           <p className="font-ui mb-4 text-gold tracking-[0.3em]">

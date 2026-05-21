@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Check, AlertCircle, Users, Utensils, MessageCircle, Music } from "lucide-react";
 import confetti from "canvas-confetti";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorScatter from "./WatercolorScatter";
 
 function fireSuccessConfetti() {
   // Fireworks-style bursts
@@ -163,7 +164,16 @@ export default function RSVPSection() {
   }
 
   return (
-    <section id="rsvp" className="section-padding bg-cream">
+    <section id="rsvp" className="section-padding bg-cream relative overflow-hidden">
+      <WatercolorScatter
+        density={2}
+        mobileDensity={1}
+        types={["insecte"]}
+        zone="corners"
+        seed={55}
+        minSize={100}
+        maxSize={170}
+      />
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <ScrollReveal className="mb-16 text-center">

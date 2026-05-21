@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import WatercolorScatter from "./WatercolorScatter";
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -41,7 +42,7 @@ export default function HeroSection() {
           style={{
             opacity,
             background:
-              "linear-gradient(to bottom, rgba(27,42,74,0.55) 0%, rgba(27,42,74,0.25) 40%, rgba(27,42,74,0.5) 100%)",
+              "linear-gradient(to bottom, rgba(58,34,24,0.55) 0%, rgba(58,34,24,0.25) 40%, rgba(58,34,24,0.5) 100%)",
           }}
         />
         {/* Vignette effect */}
@@ -49,7 +50,7 @@ export default function HeroSection() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at center, transparent 50%, rgba(27,42,74,0.4) 100%)",
+              "radial-gradient(ellipse at center, transparent 50%, rgba(58,34,24,0.4) 100%)",
           }}
         />
 
@@ -79,6 +80,17 @@ export default function HeroSection() {
           ))}
         </div>
       </div>
+
+      {/* Aquarelles : insectes qui dérivent très subtilement (préserve la photo) */}
+      <WatercolorScatter
+        density={2}
+        mobileDensity={1}
+        types={["insecte"]}
+        zone="edges"
+        seed={11}
+        minSize={70}
+        maxSize={120}
+      />
 
       {/* Content */}
       <motion.div
