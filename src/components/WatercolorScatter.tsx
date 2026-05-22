@@ -198,7 +198,7 @@ export default function WatercolorScatter({
           item={it}
           scrollYProgress={scrollYProgress}
           parallax={parallax && !reducedMotion}
-          driftEnabled={it.drift && !reducedMotion}
+          driftEnabled={false}
           ghost={ghost}
         />
       ))}

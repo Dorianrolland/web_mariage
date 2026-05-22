@@ -12,6 +12,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Compass } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorAccent from "./WatercolorAccent";
 import { VOYAGES } from "@/data/voyages";
 import { AQUARELLES } from "@/data/aquarelles";
 
@@ -29,7 +30,7 @@ export default function VoyagesSection() {
     <section
       id="voyages"
       ref={ref}
-      className="section-padding relative overflow-hidden"
+      className="section-padding relative overflow-hidden paper-grain"
       style={{ background: "var(--gradient-paper-warm)" }}
     >
       {/* Halo doux en arrière-plan */}
@@ -37,6 +38,24 @@ export default function VoyagesSection() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{ background: "var(--gradient-glow)", y: bgY }}
+      />
+      <WatercolorAccent
+        id="abeille"
+        anchor="top-left"
+        offset={{ top: "40px", left: "4%" }}
+        size={150}
+        mobileSize={90}
+        rotation={15}
+        opacity={0.95}
+      />
+      <WatercolorAccent
+        id="cocktail-orange"
+        anchor="bottom-right"
+        offset={{ bottom: "-30px", right: "-30px" }}
+        size={300}
+        mobileSize={160}
+        rotation={8}
+        opacity={0.85}
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">

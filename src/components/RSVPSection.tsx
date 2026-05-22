@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Check, AlertCircle, Users, Utensils, MessageCircle, Music, Calendar } from "lucide-react";
 import confetti from "canvas-confetti";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorAccent from "./WatercolorAccent";
 import WatercolorScatter from "./WatercolorScatter";
 
 function fireSuccessConfetti() {
@@ -192,15 +193,33 @@ export default function RSVPSection() {
   }
 
   return (
-    <section id="rsvp" className="section-padding bg-cream relative overflow-hidden">
+    <section id="rsvp" className="section-padding bg-cream relative overflow-hidden paper-grain">
       <WatercolorScatter
         density={2}
-        mobileDensity={1}
+        mobileDensity={0}
         types={["insecte"]}
         zone="corners"
         seed={55}
-        minSize={100}
-        maxSize={170}
+        minSize={90}
+        maxSize={130}
+      />
+      <WatercolorAccent
+        id="coccinelle"
+        anchor="top-right"
+        offset={{ top: "8%", right: "4%" }}
+        size={170}
+        mobileSize={110}
+        rotation={-20}
+        opacity={0.95}
+      />
+      <WatercolorAccent
+        id="dahlia"
+        anchor="bottom-left"
+        offset={{ bottom: "-60px", left: "-50px" }}
+        size={320}
+        mobileSize={170}
+        rotation={-8}
+        opacity={0.85}
       />
       <div className="mx-auto max-w-2xl">
         {/* Header */}

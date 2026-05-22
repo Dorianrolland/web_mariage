@@ -3,42 +3,66 @@
 import { Heart } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import WatercolorScatter from "./WatercolorScatter";
+import WatercolorAccent from "./WatercolorAccent";
 
+// Étapes de l'histoire. Les entrées [À COMPLÉTER] sont des champs vides à remplir.
 const milestones = [
   {
-    year: "2019",
+    year: "1ᵉʳ septembre 2017",
     title: "La Rencontre",
-    text: "Un regard, un sourire, et tout a commencé. Le destin avait ses propres plans pour nous deux.",
+    text: "Le jour où tout a commencé. On ne le savait pas encore, mais cette date allait revenir presque jour pour jour, dix ans plus tard.",
   },
   {
-    year: "2021",
-    title: "L'Évidence",
-    text: "De rires partagés en aventures vécues, notre histoire s'est écrite naturellement, page après page.",
+    year: "[Année — À COMPLÉTER]",
+    title: "[Étape — À COMPLÉTER]",
+    text: "[Premier grand voyage / décision marquante / emménagement — à raconter ici en 2-3 lignes.]",
   },
   {
-    year: "2025",
-    title: "La Promesse",
-    text: "Un genou à terre, un oui murmuré, et la certitude que cette aventure ne faisait que commencer.",
+    year: "[Année — À COMPLÉTER]",
+    title: "[Étape — À COMPLÉTER]",
+    text: "[Autre étape intermédiaire à insérer ici — un voyage, une aventure, un projet partagé.]",
   },
   {
-    year: "2027",
+    year: "[Année — À COMPLÉTER] · Japon",
+    title: "La Demande",
+    text: "Dorian part en stage à Kyoto. Clémence le rejoint un mois plus tard — et c'est là, entre les torii et les ruelles d'Osaka, qu'un genou s'est posé au sol.",
+  },
+  {
+    year: "4 septembre 2027",
     title: "Le Grand Jour",
-    text: "Entourés de ceux que nous aimons, nous scellerons notre amour au Château de Chaussy, le 4 septembre.",
+    text: "Presque jour pour jour, dix ans après ce premier septembre. Cette fois, c'est au Château de Chaussy, entourés de ceux qu'on aime, qu'on se dit oui.",
   },
 ];
 
 export default function OurStory() {
   return (
-    <section id="histoire" className="section-padding bg-cream relative overflow-hidden">
-      {/* Coquelicots/bouquet en filigrane chaud, bas de section */}
+    <section id="histoire" className="section-padding bg-cream relative overflow-hidden paper-grain">
       <WatercolorScatter
-        density={3}
-        mobileDensity={1}
-        types={["fleur", "composition"]}
+        density={2}
+        mobileDensity={0}
+        types={["fleur"]}
         zone="bottom"
         seed={21}
-        minSize={140}
-        maxSize={260}
+        minSize={120}
+        maxSize={180}
+      />
+      <WatercolorAccent
+        id="dahlia"
+        anchor="top-left"
+        offset={{ top: "-30px", left: "-60px" }}
+        size={300}
+        mobileSize={160}
+        rotation={-12}
+        opacity={0.9}
+      />
+      <WatercolorAccent
+        id="bouquet-coccinelle"
+        anchor="bottom-right"
+        offset={{ bottom: "20px", right: "-30px" }}
+        size={380}
+        mobileSize={200}
+        rotation={6}
+        opacity={0.95}
       />
       <div className="relative z-10 mx-auto max-w-4xl">
         {/* Section header */}
@@ -69,7 +93,7 @@ export default function OurStory() {
 
           {milestones.map((milestone, i) => (
             <ScrollReveal
-              key={milestone.year}
+              key={`${i}-${milestone.year}`}
               direction={i % 2 === 0 ? "left" : "right"}
               delay={i * 0.15}
               className="relative mb-16 last:mb-0"

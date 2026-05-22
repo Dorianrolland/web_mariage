@@ -60,7 +60,7 @@ const faqs = [
 
 export default function PracticalSection() {
   return (
-    <section id="infos" className="section-padding bg-cream">
+    <section id="infos" className="section-padding bg-cream relative overflow-hidden paper-grain">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <ScrollReveal className="mb-16 text-center md:mb-20">

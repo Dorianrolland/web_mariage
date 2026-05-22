@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import WatercolorScatter from "./WatercolorScatter";
+import WatercolorAccent from "./WatercolorAccent";
 
 const events = [
   {
@@ -58,16 +59,34 @@ const events = [
 
 export default function ProgramSection() {
   return (
-    <section id="programme" className="section-padding bg-cream relative overflow-hidden">
-      {/* Cocktails aquarelle en accent (Vin d'honneur) */}
+    <section id="programme" className="section-padding bg-cream relative overflow-hidden paper-grain">
       <WatercolorScatter
-        density={3}
-        mobileDensity={1}
+        density={2}
+        mobileDensity={0}
         types={["cocktail"]}
         zone="edges"
         seed={33}
-        minSize={130}
-        maxSize={230}
+        minSize={100}
+        maxSize={160}
+      />
+      <WatercolorAccent
+        id="cocktail-grenade"
+        anchor="right"
+        offset={{ top: "10%", right: "-50px" }}
+        size={380}
+        mobileSize={180}
+        rotation={8}
+        opacity={0.95}
+      />
+      <WatercolorAccent
+        id="cocktail-citron"
+        anchor="bottom-left"
+        offset={{ bottom: "60px", left: "-40px" }}
+        size={340}
+        mobileSize={170}
+        rotation={-6}
+        opacity={0.95}
+        flip
       />
       <div className="mx-auto max-w-4xl">
         {/* Header */}

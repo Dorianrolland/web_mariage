@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Monogram from "./Monogram";
 
 const navItems = [
   { label: "Notre Histoire", href: "#histoire" },
@@ -64,9 +65,10 @@ export default function Navigation() {
             <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-4">
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="font-display text-xl text-navy"
+                className="flex items-center"
+                aria-label="Retour en haut"
               >
-                C & D
+                <Monogram size={56} />
               </button>
               <div className="flex items-center gap-8">
                 {navItems.map((item) => (

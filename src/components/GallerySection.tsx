@@ -135,7 +135,7 @@ export default function GallerySection() {
   }, [lightboxIndex]);
 
   return (
-    <section id="galerie" className="section-padding bg-white-warm relative overflow-hidden">
+    <section id="galerie" className="section-padding bg-white-warm relative overflow-hidden paper-grain">
       <WatercolorScatter
         density={2}
         mobileDensity={1}

@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BedDouble, Home, Users, Hotel } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import WatercolorScatter from "./WatercolorScatter";
+import WatercolorAccent from "./WatercolorAccent";
 import { GITES, TOTAL_CAPACITY, type GiteType } from "@/data/gites";
 
 const FILTERS: { id: GiteType | "all"; label: string; icon: typeof Home }[] = [
@@ -42,16 +43,34 @@ export default function HebergementSection() {
   return (
     <section
       id="hebergement"
-      className="section-padding relative overflow-hidden bg-cream"
+      className="section-padding relative overflow-hidden bg-cream paper-grain"
     >
       <WatercolorScatter
         density={2}
-        mobileDensity={1}
+        mobileDensity={0}
         types={["fleur"]}
         zone="corners"
         seed={77}
-        minSize={120}
-        maxSize={200}
+        minSize={90}
+        maxSize={140}
+      />
+      <WatercolorAccent
+        id="dahlia"
+        anchor="top-right"
+        offset={{ top: "20px", right: "-40px" }}
+        size={300}
+        mobileSize={150}
+        rotation={10}
+        opacity={0.9}
+      />
+      <WatercolorAccent
+        id="bouquet-coccinelle"
+        anchor="bottom-left"
+        offset={{ bottom: "-60px", left: "-60px" }}
+        size={360}
+        mobileSize={180}
+        rotation={-6}
+        opacity={0.9}
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">

@@ -4,6 +4,7 @@ import { Heart, Calendar, CalendarPlus, Music, MapPin, Download } from "lucide-r
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import WatercolorScatter from "./WatercolorScatter";
+import Monogram from "./Monogram";
 
 function generateCalendarUrl() {
   const event = {
@@ -153,21 +154,9 @@ export default function Footer() {
 
         {/* Main footer content */}
         <ScrollReveal delay={0.2} className="text-center">
-          {/* Monogram */}
-          <div className="mb-8">
-            <span
-              className="text-4xl text-cream/80"
-              style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}
-            >
-              C
-            </span>
-            <span className="mx-3 text-xl text-gold/60">&</span>
-            <span
-              className="text-4xl text-cream/80"
-              style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}
-            >
-              D
-            </span>
+          {/* Monogramme — signature de clôture (inversé sur fond sombre) */}
+          <div className="mb-8 flex justify-center">
+            <Monogram size={240} opacity={0.7} invert />
           </div>
 
           <p className="font-display mb-2 text-xl text-cream/60">

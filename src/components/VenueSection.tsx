@@ -18,6 +18,7 @@ import {
   History,
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import WatercolorAccent from "./WatercolorAccent";
 
 const MapComponent = dynamic(() => import("./MapComponent"), {
   ssr: false,
@@ -76,8 +77,27 @@ const access = [
 
 export default function VenueSection() {
   return (
-    <section id="lieu" className="section-padding bg-white-warm">
-      <div className="mx-auto max-w-6xl">
+    <section id="lieu" className="section-padding bg-white-warm relative overflow-hidden paper-grain">
+      <WatercolorAccent
+        id="abeille-fleur"
+        anchor="top-right"
+        offset={{ top: "30px", right: "-60px" }}
+        size={360}
+        mobileSize={180}
+        rotation={12}
+        opacity={0.9}
+        flip
+      />
+      <WatercolorAccent
+        id="abeille"
+        anchor="bottom-left"
+        offset={{ bottom: "60px", left: "3%" }}
+        size={130}
+        mobileSize={80}
+        rotation={-10}
+        opacity={0.9}
+      />
+      <div className="relative z-10 mx-auto max-w-6xl">
         {/* Header */}
         <ScrollReveal className="mb-16 text-center md:mb-24">
           <p className="font-ui mb-4 text-gold tracking-[0.3em]">Le Lieu</p>

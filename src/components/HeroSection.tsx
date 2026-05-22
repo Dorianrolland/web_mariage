@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import WatercolorScatter from "./WatercolorScatter";
+import Monogram from "./Monogram";
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -81,27 +81,42 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Aquarelles : insectes qui dérivent très subtilement (préserve la photo) */}
-      <WatercolorScatter
-        density={2}
-        mobileDensity={1}
-        types={["insecte"]}
-        zone="edges"
-        seed={11}
-        minSize={70}
-        maxSize={120}
-      />
-
       {/* Content */}
       <motion.div
         className="relative z-10 flex flex-col items-center gap-6 px-4 text-center"
         style={{ y: textY, opacity }}
       >
-        {/* Top ornament line */}
+        {/* Grand monogramme — révélation au tracé */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, delay: 3.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-2"
+          style={{
+            filter:
+              "drop-shadow(0 4px 30px rgba(0,0,0,0.35)) drop-shadow(0 1px 0 rgba(255,253,249,0.15))",
+          }}
+        >
+          <motion.div
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            animate={{ clipPath: "inset(0 0% 0 0)" }}
+            transition={{ duration: 2.2, delay: 3.4, ease: [0.65, 0, 0.35, 1] }}
+            style={{ willChange: "clip-path" }}
+          >
+            <Monogram
+              size={320}
+              invert
+              opacity={0.95}
+              style={{ width: "min(320px, 70vw)", height: "auto" }}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Trait or sous le monogramme */}
         <motion.div
           initial={{ opacity: 0, width: 0 }}
           animate={{ opacity: 1, width: 120 }}
-          transition={{ duration: 1.5, delay: 3.5 }}
+          transition={{ duration: 1.2, delay: 5.4 }}
           className="h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent"
         />
 
@@ -109,7 +124,7 @@ export default function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 3.8 }}
+          transition={{ duration: 1, delay: 5.7 }}
           className="font-ui tracking-[0.4em] text-cream/80"
         >
           Nous avons la joie de vous inviter au mariage de
@@ -120,7 +135,7 @@ export default function HeroSection() {
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 4.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.4, delay: 6.0, ease: [0.16, 1, 0.3, 1] }}
             className="font-heading text-6xl text-cream sm:text-7xl md:text-8xl lg:text-9xl"
           >
             Clémence
@@ -129,7 +144,7 @@ export default function HeroSection() {
         <motion.span
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 4.8, ease: [0.34, 1.56, 0.64, 1] }}
+          transition={{ duration: 0.8, delay: 6.6, ease: [0.34, 1.56, 0.64, 1] }}
           className="font-display text-4xl text-gold md:text-5xl"
         >
           &
@@ -138,7 +153,7 @@ export default function HeroSection() {
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 5.0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.4, delay: 6.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-heading text-6xl text-cream sm:text-7xl md:text-8xl lg:text-9xl"
           >
             Dorian
@@ -149,13 +164,13 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 5.6 }}
+          transition={{ duration: 1, delay: 7.4 }}
           className="flex flex-col items-center gap-3"
         >
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: 60 }}
-            transition={{ duration: 1.2, delay: 5.8 }}
+            transition={{ duration: 1.2, delay: 7.6 }}
             className="h-px bg-gradient-to-r from-transparent via-gold to-transparent"
           />
           <p
@@ -175,7 +190,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 6.5, duration: 1 }}
+        transition={{ delay: 8.3, duration: 1 }}
       >
         <span className="font-ui text-cream/70 text-xs tracking-[0.3em]">
           Découvrir
